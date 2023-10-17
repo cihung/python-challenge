@@ -2,7 +2,7 @@ import os
 import csv
 
 # Set csv path
-bank_csv = os.path.join('.', 'PyBank', 'Resources', 'budget_data.csv')
+bank_csv = os.path.join('/Users/cindy/Desktop/Bootcamp/python-challenge/PyBank/Resources/budget_data.csv')
 
 # Set variables
 budget_data = []
@@ -50,8 +50,8 @@ print(f'Greatest Increase in Profits: {month_increase} (${change_increase})')
 print(f'Greatest Decrease in Profits: {month_decrease} (${change_decrease})')
 
 # Export results to a text file
-bank_file = os.path.join('.', 'Resources', 'PyBank.txt')
-with open(bank_file, "w") as txt_file:
+bank_file = os.path.join("/Users/cindy/Desktop/Bootcamp/python-challenge/PyBank/Resources/Results")
+with open("Results.txt", "w") as txt_file:
     txt_file.write("Financial Analysis\n")
     txt_file.write("----------------------------\n")
     txt_file.write(f"Total Months: {total_months}\n")

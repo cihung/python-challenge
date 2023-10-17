@@ -2,7 +2,7 @@ import os
 import csv
 
 #set csv path
-poll_csv=os.path.join('..','PyPoll','Resources','election_data.csv')
+poll_csv=os.path.join('/Users/cindy/Desktop/Bootcamp/python-challenge/PyPoll/Resources/election_data.csv')
 
 #set variables
 total_votes=0
@@ -37,14 +37,31 @@ print(f"Total Votes: {total_votes}")
 
 print("------------------")
 
-winner=""
-winner_votes=0
-for candidate_name, votes in candidate_votes.item():
-    percentage=round(votes/total_votes*100,3)
-    print(f"{candidate_name}: {percentage}% ({votes})")
-    if votes>winner_votes:
-        winner=candidate_name
-        winner_votes=votes
+# Winner of the election
+winner = ""
+winner_votes = 0
+for candidate_name, count in candidate_votes.items():  # Iterate through candidate names and their vote counts
+    if count > winner_votes:
+        winner_votes = count
+        winner = candidate_name
+    #Percentage of votes for each candidate 
+    percentage = round((count / total_votes) * 100, 3)
+    print(f"{candidate_name}: {percentage}% ({count})")
+
 print("----------------")
 print(f"Winner: {winner}")
 print("------------------")
+
+#Print the results to new text file
+analysis_results = os.path.join("Analysis","Rsults")
+with open("Results.txt","w") as textfile:
+    textfile.write("Election results\n"
+"-----------------------------------------\n"
+"Total Votes: 369711\n"
+"-----------------------------------------\n"
+"Charles Casper Stockham: 23.049% (85213)\n"
+"Diana DeGette: 73.812% (272892)\n"
+"Raymon Anthony Doane: 3.139% (11606)\n"
+"-----------------------------------------\n"
+"Winner: Diana DeGette\n"
+"-----------------------------------------\n")
